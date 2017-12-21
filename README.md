@@ -8,7 +8,7 @@ This module contains the SemtexJs documentation infosite.
 
 - Found a bug? [Raise an issue](https://github.com/semtexjs/docs/issues)
 - Made an improvement? [Create a pull-request](https://github.com/semtexjs/docs)
-- Got a question? [Ask on StackOverflow.com](https://stackoverflow.com/search?q=SemtexJs)
+- Need some help? [Ask on StackOverflow.com](https://stackoverflow.com/search?q=SemtexJs)
 
 Made with
 <span style="color:crimson;font-size:2em;vertical-align:sub;">&hearts;</span> by [Gary Doublé](http://garydouble.com).  
