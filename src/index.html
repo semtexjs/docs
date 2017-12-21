@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Semtex: Semantic Text Html Templating Engine</title>
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu|Kaushan+Script" />
+    <link rel="stylesheet" href="//unpkg.com/purecss@1.0.0/build/base-min.css">
+    <link rel="stylesheet" href="//unpkg.com/purecss@1.0.0/build/grids-min.css">
+    <link rel="stylesheet" href="//unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+  </head>
+  <body>
+    
+    <div id="layout">
+      <div id="menu">
+        <h1 class="semtex">Semtex.js</h1>
+        <h2>Html Templating Engine</h2>
+        
+        <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#install"><i class="fa fa-fw fa-download"></i> Install</a>
+        <a href="#usage"><i class="fa fa-fw fa-code"></i> Usage</a>
+        <a href="#support"><i class="fa fa-fw fa-question"></i> Support</a>
+        <a href="#licence"><i class="fa fa-fw fa-copyright"></i> Licence</a>
+
+        <button id="menu-toggle"><i class="fa fa-bars"></i></button>
+      </div>
+      <div id="content">
+        <section id="about">
+          <h3>Semtex: HTML Templating Engine</h3>
+          <p class="lead">Writing html is verbose, tedious and error prone.</p>
+          <p>Semtex offers an abridged and terse syntax that makes dealing with these kinds of structured documents a pleasure.<br/>
+          Whether in the browser, on the server or as a command-line tool, Semtex has been designed with simplicity in mind.</p>
+        </section>
+        <section id="beta-warning">
+          <p class="lead">This project is still under pre-alpha development!</p>
+          <p>Which basically means it's new and I'm still working on it...</p>
+        </section>
+        <section id="install">
+          <h3>Install</h3>
+          
+          <h4>Install via NPM</h4>
+
+          <p><code>npm install semtex</code></p>
+
+          <h4>Download a release</h4>
+
+          <p><a href="https://github.com/garydouble/semtex/releases">https://github.com/garydouble/semtex/releases</a></p>
+
+          <h4>Browsers</h4>
+
+          <p>UMD based files are located in the dist folder:</p>
+
+          <p><strong>semtex.js</strong><br />Uncompressed development version.</p>
+          <p><strong>semtex.min.js</strong><br />Minified production version.</p>
+          
+          <p><em>Both development and production files have source maps provided.</em></p>
+        </section>
+        <section id="usage">
+          <h3>Usage</h3>
+
+          <p>The first step is to define a template:</p>
+
+<pre><code>html:
+  head:
+    meta[name=&quot;keywords&quot;,content=&quot;HTML,CSS,XML,JavaScript&quot;]:
+    title: {{title}}
+  body:
+    p: Hello, {{message}}!
+    div:
+      lots of lovely content
+      to be placed here...</code></pre>
+
+          <p>Once the template source code has been defined, the next step is to compile it into a render function. The actual template can be loaded any way you desire, providing that when it enters the <code>compile()</code> function it’s a <code>string</code>:</p>
+
+          <pre><code class="javascript">var render = semtex.compile(src);</code></pre>
+
+          <p>Now, all that’s left to do is render the template into html, passing in any variable replacement values:</p>
+
+<pre><code class="javascript">var html = render({
+  title: 'Semtex example',
+  message: 'Semtex'
+});
+</code></pre>
+
+          <p>Which, given the template described above, will produce the following output:</p>
+
+<pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;HTML,CSS,XML,JavaScript&quot;/&gt;
+    &lt;title&gt;Semtex example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello, Semtex!&lt;/p&gt;
+    &lt;div&gt;lots of lovely content to be placed here...&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        </section>
+        <section id="basics">
+          <h3>Basics</h3>
+
+<p>HTML, with its open-close tag structure and lax whitespace, ...TODO</p>
+<p>Semtex takes a different approach. By using special syntactical conventions and whitespace-based hierarchies, it offers a more consistent and easy to read format.</p>
+<p>At its lowest level, Semtex consists of tags and content.</p>
+<p>Tags are identified by their trailing <code>:</code> character, for example <code>html:</code> defines a <code>&lt;html&gt;</code> tag. They can also be nested just like html, using a 2-space indent conventon:</p>
+
+<div class="pure-g">
+  <div class="pure-u-1-2">
+<pre><code>html:
+  head:
+    title:
+  body:
+    h1:</code></pre>
+  </div>
+  <div class="pure-u-1-2">
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+</div>
+        </section>
+        <section id="attributes">
+          <h3>Attributes</h3>
+        </section>
+        <section id="variables">
+          <h3>Variables</h3>          
+        </section>
+        <section id="support">
+          <h3>Support</h3>
+          <p><a href="https://github.com/garydouble/semtex/issues">https://github.com/garydouble/semtex/issues</a></p>
+          <p>Issues, feedback and pull requests all welcome.<br />Happy Coding!</p>
+        </section>
+        <section id="licence">
+          <h3>License</h3>
+
+          <p>Semtex is, and always will be, free and open software.</p>
+          
+<pre class="no-hljs"><code class="text">MIT License
+
+Copyright (c) 2017 Gary Doublé
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</code></pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="js/site.js"></script>
+  </body>
+</html>
